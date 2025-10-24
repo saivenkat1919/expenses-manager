@@ -1,0 +1,49 @@
+.expense-list {
+  margin-top: 20px;
+}
+
+.date-group {
+  margin-bottom: 15px;
+}
+
+.date-header {
+  color: #2196F3;
+  margin-bottom: 10px;
+}
+
+.expense-items {
+  list-style: none;
+  padding: 0;
+}
+
+.expense-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 8px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.expense-reason {
+  flex: 1;
+}
+
+.expense-amount {
+  font-weight: bold;
+  margin: 0 15px;
+}
+
+.delete-button {
+  padding: 5px 10px;
+  background-color: transparent;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #dc3545;
+  color: white;
+}
