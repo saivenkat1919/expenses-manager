@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# Simple Expenses Tracking website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# How to build this for yourself :
 
-## Available Scripts
+# Firebase Side
+1. Create a Firebase Project
+2. Go to https://console.firebase.google.com
+3. Click “Add project” → name it “Expense Tracker”
+4. Once created, click “Web” (</>) to add a web app.
+5. Register the app → you’ll get a config snippet like this:
+   const firebaseConfig = {
+    apiKey: "AIzaSyA....",
+    authDomain: "expense-tracker.firebaseapp.com",
+    projectId: "expense-tracker",
+    storageBucket: "expense-tracker.appspot.com",
+    messagingSenderId: "1234567890",
+    appId: "1:1234567890:web:abcdef123456"
+  };
 
-In the project directory, you can run:
 
-### `npm start`
+# Project Folder 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Run this command 
+  npm install firebase
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Open firebase.js file in src folder and remove and paste this part with the details given by firebase
 
-### `npm test`
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MSG_SENDER_ID",
+  appId: "YOUR_APP_ID",
+};
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Building the React App
 
-### `npm run build`
+In the project folder, run
+  npm run build
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Firebase Hosting
 
-### `npm run eject`
+Creating a database :
+1. Go to your Firebase console
+2. Click "Build" → “Firestore Database” → “Create database”
+3. Choose Start in test mode → click Enable
+(we’ll secure it later)
+This creates a Firestore database where all expenses will be stored.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Installing Firebase CLI
+Run
+  npm install -g firebase-tools
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Run
+  firebase login
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Inside Project Folder :
+Run,
+  firebase init
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+Select features → Use arrow keys and select “Hosting: Configure files for Firebase Hosting” → press Space → Enter
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Select existing project → choose your Firebase project (the one you already created)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+What do you want to use as your public directory? → build
 
-### Code Splitting
+Configure as a single-page app (rewrite all URLs to /index.html)? → y
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Set up automatic builds/deploys with GitHub? →  n
 
-### Analyzing the Bundle Size
+Firebase will create a few config files (like firebase.json).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Deploy your app
+  firebase deploy
 
-### Making a Progressive Web App
+After a few seconds, you’ll get an output like:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  Project Console: https://console.firebase.google.com/project/your-project-id/overview
+  Hosting URL: https://your-project-id.web.app
 
-### Advanced Configuration
+# If you make any code changes:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  npm run build
+  firebase deploy
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+That’s it — it updates the hosted version.
